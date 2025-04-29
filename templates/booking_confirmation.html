@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card shadow-lg p-4 mt-5 mx-auto" style="max-width: 600px;">
+  <h2 class="text-center mb-4">Booking Confirmation</h2>
+  <ul class="list-group">
+    <li class="list-group-item"><strong>Booking ID:</strong> {{ booking[0] }}</li>
+    <li class="list-group-item"><strong>Car:</strong> {{ booking[1] }} ({{ booking[2] }})</li>
+    <li class="list-group-item"><strong>Start Date:</strong> {{ booking[3].strftime('%Y-%m-%d') }}</li>
+    <li class="list-group-item"><strong>End Date:</strong> {{ booking[4].strftime('%Y-%m-%d') }}</li>
+    <li class="list-group-item"><strong>Total Days:</strong> {{ days }}</li>
+    <li class="list-group-item"><strong>Total Cost:</strong> ${{ total_cost }}</li>
+  </ul>
+  <div class="text-center mt-4">
+    <a href="{{ url_for('home') }}" class="btn btn-primary">Back to Home</a>
+  </div>
+</div>
+{% endblock %}
+

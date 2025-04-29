@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="
+  background: url('https://images.unsplash.com/photo-1606925797304-73dfc3a7cda2?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+">
+  <div class="card p-4 shadow-lg border-0" style="max-width: 600px; width: 100%; background-color: rgba(255, 255, 255, 0.95);">
+    <h2 class="text-center mb-4">Create an Account</h2>
+    <form method="POST">
+      {{ form.hidden_tag() }}
+
+      <div class="mb-3">
+        {{ form.name.label(class="form-label") }}
+        {{ form.name(class="form-control", placeholder="Full name") }}
+      </div>
+
+      <div class="mb-3">
+        {{ form.email.label(class="form-label") }}
+        {{ form.email(class="form-control", placeholder="Email address") }}
+      </div>
+
+      <div class="mb-3">
+        {{ form.password.label(class="form-label") }}
+        {{ form.password(class="form-control", placeholder="Password") }}
+      </div>
+
+      <div class="mb-3">
+        {{ form.confirm_password.label(class="form-label") }}
+        {{ form.confirm_password(class="form-control", placeholder="Confirm password") }}
+      </div>
+
+      <div class="d-grid">
+        {{ form.submit(class="btn btn-success") }}
+      </div>
+    </form>
+    <p class="text-center mt-3">
+      Already have an account? <a href="{{ url_for('login') }}">Login</a>
+    </p>
+  </div>
+</div>
+{% endblock %}

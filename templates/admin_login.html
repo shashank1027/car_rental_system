@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row justify-content-center align-items-center" style="min-height: 80vh;">
+  <div class="col-md-6 col-lg-5">
+    <div class="card shadow p-4">
+      <h2 class="text-center mb-4">Admin Login</h2>
+      <form method="POST">
+        {{ form.hidden_tag() }}
+
+        <div class="mb-3">
+          {{ form.email.label(class="form-label") }}
+          {{ form.email(class="form-control", placeholder="Enter admin email") }}
+        </div>
+
+        <div class="mb-3">
+          {{ form.password.label(class="form-label") }}
+          {{ form.password(class="form-control", placeholder="Enter password") }}
+        </div>
+
+        <div class="d-grid">
+          {{ form.submit(class="btn btn-danger") }}
+        </div>
+      </form>
+      <p class="mt-3 text-center">
+        Not an Admin? <a href="{{ url_for('login') }}">Go to User Login</a>
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}

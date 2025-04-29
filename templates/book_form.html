@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-4">Book This Car</h2>
+<form method="POST">
+  {{ form.hidden_tag() }}
+
+  <div class="mb-3">{{ form.customer_name.label }} {{ form.customer_name(class="form-control") }}</div>
+  <div class="mb-3">{{ form.phone.label }} {{ form.phone(class="form-control") }}</div>
+  <div class="mb-3">{{ form.license_number.label }} {{ form.license_number(class="form-control") }}</div>
+  <div class="mb-3">{{ form.bank_details.label }} {{ form.bank_details(class="form-control") }}</div>
+  <div class="mb-3">{{ form.pickup_location.label }} {{ form.pickup_location(class="form-control") }}</div>
+  <div class="mb-3">{{ form.dropoff_location.label }} {{ form.dropoff_location(class="form-control") }}</div>
+  <div class="mb-3">{{ form.start_date.label }} {{ form.start_date(class="form-control", type="date") }}</div>
+  <div class="mb-3">{{ form.end_date.label }} {{ form.end_date(class="form-control", type="date") }}</div>
+  <div class="mb-3">{{ form.submit(class="btn btn-primary") }}</div>
+</form>
+{% endblock %}

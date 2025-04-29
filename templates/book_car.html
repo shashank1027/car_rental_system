@@ -1,0 +1,23 @@
+<!-- templates/book_car.html -->
+{% extends "base.html" %}
+{% block content %}
+  <h2>Book a Car</h2>
+  <form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="mb-3">
+      {{ form.car_id.label }}<br>
+      {{ form.car_id(class="form-select") }}
+    </div>
+    <div class="mb-3">
+      {{ form.start_date.label }}<br>
+      {{ form.start_date(class="form-control") }}
+    </div>
+    <div class="mb-3">
+      {{ form.end_date.label }}<br>
+      {{ form.end_date(class="form-control") }}
+    </div>
+    <div class="mb-3">
+      {{ form.submit(class="btn btn-primary") }}
+    </div>
+  </form>
+{% endblock %}

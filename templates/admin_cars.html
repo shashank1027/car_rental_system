@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h2>Manage Cars</h2>
+  <a href="{{ url_for('add_car') }}" class="btn btn-success">Add New Car</a>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-bordered table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>Car ID</th>
+        <th>Model</th>
+        <th>License Plate</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for car in cars %}
+        <tr>
+          <td>{{ car[0] }}</td>
+          <td>{{ car[1] }}</td>
+          <td>{{ car[2] }}</td>
+          <td>
+            {% if car[3] == 'Available' %}
+              <span class="badge bg-success">Available</span>
+            {% elif car[3] == 'Rented' %}
+              <span class="badge bg-danger">Rented</span>
+            {% else %}
+              <span class="badge bg-warning text-dark">Not Available</span>
+            {% endif %}
+          </td>
+          <td>
+            <form method="POST" action="{{ url_for('delete_car', car_id=car[0]) }}" style="display:inline;">
+              <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure to delete this car?')">Delete</button>
+            </form>
+
+            {% if car[3] == 'Available' %}
+            <form method="POST" action="{{ url_for('mark_unavailable', car_id=car[0]) }}" style="display:inline;">
+              <button class="btn btn-sm btn-warning mt-1">Mark Not Available</button>
+            </form>
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="mt-4 text-center">
+  <a href="{{ url_for('logout') }}" class="btn btn-secondary">Back to Login</a>
+</div>
+
+{% endblock %}
